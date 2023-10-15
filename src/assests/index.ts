@@ -1,6 +1,6 @@
 const assets = {
     images: {
-        logo: require("./images/")
+        logo: require("./images/Logo1-JPEG.jpg")
     }
 };
 

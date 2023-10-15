@@ -4,7 +4,7 @@ type Props = {};
 
 const ChangelogPage = (props: Props) => {
     return (
-        <div>MainLayout</div>
+        <div>ChangeLog</div>
     );
 }
 
