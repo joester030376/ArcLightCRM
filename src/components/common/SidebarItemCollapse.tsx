@@ -1,11 +1,13 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { RouteType } from '../../routes/config';
 import { ListItemButton, ListItemIcon, ListItemText, Typography, Collapse, List } from '@mui/material';
 import ExpandLessOutlinedIcon from '@mui/icons-material/ExpandLessOutlined';
 import ExpandMoreOutlinedIcon from '@mui/icons-material/ExpandMoreOutlined';
 import colorConfigs from '../../configs/colorConfigs';
 import SidebarItem from './SidebarItem';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../redux/store';
 
 type Props = {
     item: RouteType;
@@ -14,6 +16,14 @@ type Props = {
 const SidebarItemCollapse = ({ item }: Props ) => {
 
     const [open, setOpen] = useState(false);
+
+    const {appState} = useSelector((state: RootState) => state.appState);
+
+    useEffect(() => {
+        if (appState.includes(item.state)) {
+            setOpen(true);
+        }
+    }, [appState, item]);
 
     return (
         item.sidebarProps ? (
