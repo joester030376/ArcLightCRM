@@ -17,7 +17,7 @@ const Topbar = () => {
         >
             <Toolbar>
                 <Typography variant="h6">
-                    React sidebar with dropdown
+                    Arclight CRM
                 </Typography>
             </Toolbar>
         </AppBar>
