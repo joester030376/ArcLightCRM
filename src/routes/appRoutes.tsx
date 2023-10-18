@@ -2,14 +2,10 @@ import React from 'react';
 import HomePage from "../pages/home/HomePage";
 import { RouteType } from "./config";
 import DashboardPageLayout from '../pages/dashboard/DashboardPageLayout';
-import FormatListBulletedOutlinedIcon from '@mui/icons-material/FormatListBulletedOutlined';
 import DashboardOutlinedIcon from '@mui/icons-material/DashboardOutlined';
-import DefaultPage from '../pages/dashboard/DefaultPage';
-import DashboardIndex from '../pages/dashboard/DashboardIndex';
-import ChangelogPage from '../pages/changelog/ChanglogPage';
-import AnalyticsPage from '../pages/dashboard/AnalyticsPage';
-import SaasPage from '../pages/dashboard/SaasPage';
-import TestChildPage from '../pages/changelog/TestChildPage';
+import ClientsPageLayout from '../pages/clients/ClientsPageLayout';
+import ClientsListPage from '../pages/clients/ClientsListPage';
+import Person2Icon from '@mui/icons-material/Person2';
 
 
 const appRoutes: RouteType[] = [
@@ -29,12 +25,23 @@ const appRoutes: RouteType[] = [
     },
     {
         path: "/clients",
-        element: <ChangelogPage />,
-        state: "client",
+        element: <ClientsPageLayout />,
+        state: "clients",
         sidebarProps: {
             displayText: "Clients",
-            icon: <FormatListBulletedOutlinedIcon />
-        }
+            icon: <Person2Icon />
+        },
+        child: [
+            {
+                index: true,
+                path: "/clients/clientlist",
+                element: <ClientsListPage />,
+                state: "client.clientlist",
+                sidebarProps: {
+                    displayText: "Client List"
+                }
+            }
+        ]
         
     }
     
