@@ -11,7 +11,13 @@ const colorConfigs = {
         bg: "#fff",
         color: "#000"
     },
-    mainBg: colors.grey["100"]
+    mainBg: colors.grey["100"],
+    appBarIcons: {
+        color: '#0095fa'         
+    },
+   appBarNotification: {
+        color: '#233044'
+   }
 };
 
 export default colorConfigs;

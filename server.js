@@ -1,5 +1,6 @@
 const express = require('express');
 const mysql = require('mysql');
+const cors = require('cors');
 const app = express();
 
 
@@ -14,6 +15,13 @@ connection.connect(function(err) {
     console.log("Connected to the database.");
 });
 
+app.use(cors());
+
+app.use('/login', (req,res) => {
+    res.send({
+        token: 'test123'
+    });
+});
 
 app.listen(8080, function(err) {
     if (err) console.log('Could not connect to server');

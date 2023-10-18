@@ -9,13 +9,15 @@ import DashboardIndex from '../pages/dashboard/DashboardIndex';
 import ChangelogPage from '../pages/changelog/ChanglogPage';
 import AnalyticsPage from '../pages/dashboard/AnalyticsPage';
 import SaasPage from '../pages/dashboard/SaasPage';
+import TestChildPage from '../pages/changelog/TestChildPage';
+
 
 const appRoutes: RouteType[] = [
     {
         index: true,
         element: <HomePage />,
         state: "home"
-    },
+    },     
     {
         path: "/dashboard",
         element: <DashboardPageLayout />,
@@ -23,48 +25,19 @@ const appRoutes: RouteType[] = [
         sidebarProps: {
             displayText: "Dashboard",
             icon: <DashboardOutlinedIcon />
-        },
-        child: [
-            {
-                index: true,
-                element: <DashboardIndex />,
-                state: "dasboard.index"                
-            },
-            {
-                path: "/dashboard/default",
-                element: <DefaultPage />,
-                state: "dasboard.default",
-                sidebarProps: {
-                    displayText: "Default"
-                }
-            },
-            {
-                path: "/dashboard/analytics",
-                element: <AnalyticsPage />,
-                state: "dasboard.analytics",
-                sidebarProps: {
-                    displayText: "AnalyticsPage"
-                }
-            },
-            {
-                path: "/dashboard/saas",
-                element: <SaasPage />,
-                state: "dasboard.saas",
-                sidebarProps: {
-                    displayText: "SaasPage"
-                }
-            }                                   
-        ]
+        }        
     },
     {
-        path: "/changelog",
+        path: "/clients",
         element: <ChangelogPage />,
-        state: "changelog",
+        state: "client",
         sidebarProps: {
-            displayText: "ChangeLog",
+            displayText: "Clients",
             icon: <FormatListBulletedOutlinedIcon />
         }
-    }        
+        
+    }
+    
 ];
 
 export default appRoutes;
