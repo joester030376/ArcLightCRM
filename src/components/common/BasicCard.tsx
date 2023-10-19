@@ -11,10 +11,12 @@ type ContentProps = {
 const BasicCard = (props: ContentProps) => {
   return (
     <Card sx={{ minWidth: 275 }}>
-       {props.header}
         <CardContent>
+          {props.header}  
+          <div>
           {props.content}
-        </CardContent>
+          </div>        
+        </CardContent>        
     </Card>
   );
 }

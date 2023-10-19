@@ -1,19 +1,30 @@
-import * as React from 'react';
+import React from 'react';
+import {Grid, TextField, IconButton} from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
-import TextField from '@mui/material/TextField';
 
+type searchBarProps = {
+    searchByText: string
+}
 
-const Searchbar = () => {
-  return (
-    <div>
-        <SearchIcon />
-        <TextField 
-            id='outlined-basic'
-            label='{placeholder}'
-            //onChange={onChange} 
-        />
-    </div>
-  );
+const Searchbar = (searchBarValues: searchBarProps) => {
+    
+    return (
+        <Grid>
+            <TextField
+                fullWidth
+                id="standard-bare"
+                variant="outlined"
+                defaultValue={searchBarValues.searchByText}
+                InputProps={{
+                  startAdornment: (                    
+                    <IconButton>
+                      <SearchIcon/>
+                    </IconButton>
+                  ),
+                }}
+              />
+        </Grid>
+    );
 }
 
 export default Searchbar;

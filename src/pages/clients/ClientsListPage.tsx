@@ -1,18 +1,24 @@
 import React from 'react';
-import { Outlet } from 'react-router';
 import BasicCard from '../../components/common/BasicCard';
 import Searchbar from '../../components/common/Searchbar';
+import {Grid, Typography} from '@mui/material';
 
 type Props = {};
 
 const ClientsListPage = () => {
+     
     return (
-        <div>
-            <BasicCard 
-                header={<Searchbar />} 
-                content="test"
+        <Grid 
+            item xs={8} 
+        >
+            <Typography>
+                Clients
+            </Typography>
+            <BasicCard                
+                header={<Searchbar searchByText='Search by client name' />}  
+                content="test"               
             />
-        </div>
+        </Grid>   
     );
 }
 
