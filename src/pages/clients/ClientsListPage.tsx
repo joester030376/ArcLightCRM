@@ -11,7 +11,11 @@ const ClientsListPage = () => {
         <Grid 
             item xs={8} 
         >
-            <Typography>
+            <Typography variant="h3"
+                sx={{
+                    margin: '10px'
+                }}
+            >
                 Clients
             </Typography>
             <BasicCard                

@@ -1,11 +1,11 @@
 import React from 'react';
 import HomePage from "../pages/home/HomePage";
 import { RouteType } from "./config";
-import DashboardPageLayout from '../pages/dashboard/DashboardPageLayout';
 import DashboardOutlinedIcon from '@mui/icons-material/DashboardOutlined';
 import ClientsPageLayout from '../pages/clients/ClientsPageLayout';
 import ClientsListPage from '../pages/clients/ClientsListPage';
 import Person2Icon from '@mui/icons-material/Person2';
+import Dashboard from '../pages/dashboard/Dashboard';
 
 
 const appRoutes: RouteType[] = [
@@ -16,7 +16,7 @@ const appRoutes: RouteType[] = [
     },     
     {
         path: "/dashboard",
-        element: <DashboardPageLayout />,
+        element: <Dashboard />,
         state: "dashboard",
         sidebarProps: {
             displayText: "Dashboard",
@@ -38,7 +38,7 @@ const appRoutes: RouteType[] = [
                 element: <ClientsListPage />,
                 state: "client.clientlist",
                 sidebarProps: {
-                    displayText: "Client List"
+                    displayText: "List"
                 }
             }
         ]

@@ -165,20 +165,40 @@ export default function PrimarySearchAppBar() {
                 </Typography>         
               <Box sx={{ flexGrow: 1 }} />
               <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-                <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-                  <Badge badgeContent={4} color="error">
-                    <MailIcon />
-                  </Badge>
-                </IconButton>
-                <IconButton
-                  size="large"
-                  aria-label="show 17 new notifications"
-                  color="inherit"
-                >
-                  <Badge badgeContent={17} color="error">
-                    <NotificationsIcon />
-                  </Badge>
-                </IconButton>
+                <Tooltip title="New Messages">
+                  <IconButton size="large" aria-label="show 4 new mails" color="inherit" 
+                    sx={{
+                      color: "#0095fa",
+                      borderRadius: "5px",
+                      margin: '5px',
+                      "&:hover" : {
+                        backgroundColor: "lightGray"
+                      }
+                    }}>
+                    <Badge badgeContent={4} color="error">
+                      <MailIcon />
+                    </Badge>
+                  </IconButton>
+                </Tooltip>
+                <Tooltip title="Notifications">
+                  <IconButton
+                    size="large"
+                    aria-label="show 17 new notifications"
+                    color="inherit"
+                    sx={{
+                      color: "#0095fa",
+                      borderRadius: "5px",
+                      margin: '5px',
+                      "&:hover" : {
+                        backgroundColor: "lightGray"
+                      }
+                    }}
+                  >
+                    <Badge badgeContent={17} color="error">
+                      <NotificationsIcon />
+                    </Badge>
+                  </IconButton>
+                </Tooltip>
                 <IconButton
                   size="large"
                   edge="end"

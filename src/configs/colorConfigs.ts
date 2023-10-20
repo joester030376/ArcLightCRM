@@ -17,7 +17,7 @@ const colorConfigs = {
     },
    appBarNotification: {
         color: '#233044'
-   }
+   }   
 };
 
 export default colorConfigs;
