@@ -1,29 +1,20 @@
 import React from 'react';
-import BasicCard from '../../components/common/BasicCard';
-import Searchbar from '../../components/common/Searchbar';
-import {Grid, Typography} from '@mui/material';
-
-type Props = {};
+import { useState } from 'react';
+import axios from 'axios';
 
 const ClientsListPage = () => {
-     
-    return (
-        <Grid 
-            item xs={8} 
-        >
-            <Typography variant="h3"
-                sx={{
-                    margin: '10px'
-                }}
-            >
-                Clients
-            </Typography>
-            <BasicCard                
-                header={<Searchbar searchByText='Search by client name' />}  
-                content="test"               
-            />
-        </Grid>   
-    );
+
+  const [clientList, setClientList] = useState([]);
+
+  const clients = axios.get('http://localhost/8080/clients', {
+    
+  });
+
+
+  return (
+    <div>Clients List Page</div>
+  )
+
 }
 
 export default ClientsListPage;

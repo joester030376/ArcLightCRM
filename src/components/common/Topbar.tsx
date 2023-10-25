@@ -207,6 +207,11 @@ export default function PrimarySearchAppBar() {
                   aria-haspopup="true"
                   onClick={handleProfileMenuOpen}
                   color="inherit"
+                  sx={{
+                    "&:hover" : {
+                      backgroundColor: 'lightGray'
+                    }
+                  }}
                 >
                     <Tooltip title={user?.name}>
                         <Avatar 
