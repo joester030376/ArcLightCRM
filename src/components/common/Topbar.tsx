@@ -64,8 +64,6 @@ export default function PrimarySearchAppBar() {
         <MenuItem onClick={handleMenuClose}>{user?.name}</MenuItem>
         <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
         <MenuItem onClick={handleMenuClose}>My account</MenuItem>
-        <MenuItem onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}>Logout</MenuItem>
-
     </Menu>
   );
 
@@ -121,31 +119,7 @@ export default function PrimarySearchAppBar() {
   );
 
   return (
-    <div>
-        {!isAuthenticated && (
-            <Box>
-                <AppBar
-                        sx={{
-                        width: `calc(100% - ${sizeConfigs.sidebar.width})`,
-                        ml: sizeConfigs.sidebar.width,
-                        boxShadow: "unset",
-                        backgroundColor: colorConfigs.topbar.bg,
-                        color: colorConfigs.topbar.color}}
-                >
-                <Toolbar>            
-                    <Typography
-                        variant="h6"
-                        noWrap
-                        component="div"
-                        sx={{ display: { xs: 'none', sm: 'block' } }}
-            >
-                        ArcLight CRM
-                    </Typography> 
-                </Toolbar>
-                </AppBar> 
-            </Box>           
-        )}
-        {isAuthenticated && (
+    <div>        
             <Box sx={{ flexGrow: 1 }}>
             <AppBar sx={{
                     width: `calc(100% - ${sizeConfigs.sidebar.width})`,
@@ -237,8 +211,7 @@ export default function PrimarySearchAppBar() {
           </AppBar>
           {renderMobileMenu}
           {renderMenu}
-        </Box>
-        )}
+        </Box>       
     </div>    
   )
 }

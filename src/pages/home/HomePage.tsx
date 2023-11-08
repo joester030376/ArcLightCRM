@@ -22,13 +22,8 @@ const HomePage = (props: Props) => {
     return (
         <Grid
             container
-            style={{minHeight: "100vh"}}        
+            style={{minHeight: "100vh"}}       
         >
-            <Grid item xs={12} sm={6}>
-                <img src={assets.images.login} 
-                    style={{width: '100%', height: '100vh', objectFit: 'cover' }} 
-                    alt='brand' />
-            </Grid>
             <Grid 
                 container 
                 item xs={12} sm={6}
@@ -36,25 +31,7 @@ const HomePage = (props: Props) => {
                 alignItems={'center'}              
                 direction={'column'}                
             >
-                <div />
-                <div>
-                    <Grid>
-                       <PaperStyle variant="elevation" elevation={10}>
-                            <Typography variant='h2'>ArcLight CRM</Typography>s
-                            <Avatar
-                                sx={{
-                                    justifyContent: "center",
-                                    display: "flex",
-                                    margin: "5% auto",                                  
-                                    bgcolor: blue[500]                                    
-                                }}
-                            >
-                               <LockIcon />
-                            </Avatar>
-                            <LoginButton />                            
-                       </PaperStyle>
-                    </Grid>
-                </div>
+                <div />                
             </Grid>
         </Grid>
     );

@@ -14,35 +14,7 @@ const Sidebar = () => {
 
     return ( 
         <div>
-            {!isAuthenticated && (
-                <Drawer
-                    variant="permanent"
-                    sx={{
-                        width: sizeConfigs.sidebar.width,
-                        flexShrink: 0,
-                        "& .MuiDrawer-paper" : {
-                            width: sizeConfigs.sidebar.width,
-                            boxSizing: "border-box",
-                            borderRight: "0px",
-                            backgroundColor: colorConfigs.sidebar.bg,
-                            color: colorConfigs.sidebar.color                   
-                        }
-                    }}  
-                >
-                    <Toolbar sx={{ marginBottom: "20px"}} >
-                        <Stack
-                            sx={{width: "100%"}}
-                            direction="row"
-                            justifyContent="center"  
-                        >               
-                            <Avatar src={assets.images.logo} style={{borderRadius: 5}} />
-                        </Stack> 
-                    </Toolbar>  
-
-                </Drawer>
-            )}
-            {isAuthenticated && (
-                <Drawer
+            <Drawer
                 variant="permanent"
                 sx={{
                     width: sizeConfigs.sidebar.width,
@@ -76,8 +48,7 @@ const Sidebar = () => {
                             ) : null
                         ))}                            
                 </List>
-            </Drawer> 
-            )}
+            </Drawer>             
         </div>
     );
 }

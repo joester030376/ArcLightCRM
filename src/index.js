@@ -12,19 +12,11 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   
   
-  <React.StrictMode>
-    <Auth0Provider
-      domain = {process.env.REACT_APP_DOMAIN}
-      clientId = {process.env.REACT_APP_CLIENT_ID}
-      authorizationParams={{
-        redirect_uri: 'http://localhost:3000/dashboard'
-      }}
-    >
+  <React.StrictMode>    
       <Provider store={store}>
         <CssBaseline />
           <App />
-      </Provider>
-    </Auth0Provider>,    
+      </Provider>      
   </React.StrictMode>  
 );
 
