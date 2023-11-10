@@ -14,7 +14,7 @@ import MoreIcon from '@mui/icons-material/MoreVert';
 import sizeConfigs from '../../configs/sizeConfigs';
 import colorConfigs from '../../configs/colorConfigs';
 import { useAuth0 } from "@auth0/auth0-react";
-import { Tooltip, Avatar } from "@mui/material";
+import { Tooltip, Avatar, Button } from "@mui/material";
 
 
 export default function PrimarySearchAppBar() {
@@ -106,45 +106,38 @@ export default function PrimarySearchAppBar() {
             </MenuItem>
             <MenuItem onClick={handleProfileMenuOpen}>
                 <IconButton
-                size="large"
+                size="medium"
                 aria-label="account of current user"
                 aria-controls="primary-search-account-menu"
                 aria-haspopup="true"
                 color="inherit"
                 >
                 </IconButton>
-                <p>Profile</p>
+                <p>Profile</p>                
             </MenuItem>
         </Menu>
   );
 
   return (
     <div>        
-            <Box sx={{ flexGrow: 1 }}>
+            <Box sx={{ flexGrow: 2 }}>
             <AppBar sx={{
                     width: `calc(100% - ${sizeConfigs.sidebar.width})`,
                     ml: sizeConfigs.sidebar.width,
                     boxShadow: "unset",
-                    backgroundColor: colorConfigs.topbar.bg,
+                    backgroundColor: colorConfigs.mainBg,
                     color: colorConfigs.topbar.color
             }}>
             <Toolbar>            
-                <Typography
-                    variant="h6"
-                    noWrap
-                    component="div"
-                    sx={{ display: { xs: 'none', sm: 'block' } }}
-                >
-                    ArcLight CRM
-                </Typography>         
+                
               <Box sx={{ flexGrow: 1 }} />
-              <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+              <Box sx={{ display: { xs: 'none', md: 'flex', '& button': { m: 1 } } }}>
                 <Tooltip title="New Messages">
-                  <IconButton size="large" aria-label="show 4 new mails" color="inherit" 
+                  <IconButton size="medium" aria-label="show 4 new mails" color="inherit" 
                     sx={{
                       color: "#0095fa",
-                      borderRadius: "5px",
-                      margin: '5px',
+                      borderRadius: "5px",  
+                      padding: "0px 10px",                     
                       "&:hover" : {
                         backgroundColor: "lightGray"
                       }
@@ -161,8 +154,8 @@ export default function PrimarySearchAppBar() {
                     color="inherit"
                     sx={{
                       color: "#0095fa",
-                      borderRadius: "5px",
-                      margin: '5px',
+                      borderRadius: "5px",   
+                      margin: "0px 10px",                  
                       "&:hover" : {
                         backgroundColor: "lightGray"
                       }
@@ -173,29 +166,26 @@ export default function PrimarySearchAppBar() {
                     </Badge>
                   </IconButton>
                 </Tooltip>
-                <IconButton
-                  size="large"
-                  edge="end"
-                  aria-label="account of current user"
-                  aria-controls={menuId}
-                  aria-haspopup="true"
-                  onClick={handleProfileMenuOpen}
-                  color="inherit"
-                  sx={{
-                    "&:hover" : {
-                      backgroundColor: 'lightGray'
-                    }
-                  }}
+                
+                <Button
+                    variant="outlined" 
+                    size='small' 
+                    endIcon={<Avatar src={user?.picture} /> }      
+                    onClick={handleProfileMenuOpen}  
+                    sx={{
+                        textTransform: "none",
+                        borderRadius : "10px",
+                        padding: "0px 5px"
+                     
+                      
+                    }}   
                 >
-                    <Tooltip title={user?.name}>
-                        <Avatar 
-                            src={user?.picture}
-                        />
-                    </Tooltip>
-                  
-                </IconButton>
+                    <p>Hi, Joseph Varner</p>
+                </Button>  
+               
               </Box>
               <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
+                
                 <IconButton
                   size="large"
                   aria-label="show more"

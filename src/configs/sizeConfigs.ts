@@ -2,7 +2,7 @@ import { colors } from '@mui/material';
 
 const sizeConfigs = {
     sidebar: {
-        width: "300px"
+        width: "240px"
     }    
 };
 

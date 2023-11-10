@@ -3,7 +3,6 @@ import React from 'react';
 import assets from '../../assests';
 import { blue } from '@mui/material/colors';
 import LockIcon from '@mui/icons-material/Lock';import { styled } from '@mui/material/styles';
-import LoginButton from '../../components/common/LoginButton';
 
 type Props = {};
 
@@ -31,7 +30,6 @@ const HomePage = (props: Props) => {
                 alignItems={'center'}              
                 direction={'column'}                
             >
-                <div />                
             </Grid>
         </Grid>
     );
