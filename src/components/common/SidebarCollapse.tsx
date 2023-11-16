@@ -21,7 +21,7 @@ const SidebarItemCollapse = ({ item }: Props ) => {
 
     useEffect(() => {
         if (appState.includes(item.state)) {
-            setOpen(true);
+            setOpen(!true);
         }
     }, [appState, item]);
 
@@ -54,7 +54,7 @@ const SidebarItemCollapse = ({ item }: Props ) => {
                 />
                 {open ?  <ExpandLessOutlinedIcon /> : <ExpandMoreOutlinedIcon />}                    
             </ListItemButton>  
-            <Collapse in={open} timeout="auto">
+            <Collapse in={open} timeout="auto" unmountOnExit>
                 <List>
                 {item.child?.map((route, index) => (
                         route.sidebarProps ? (

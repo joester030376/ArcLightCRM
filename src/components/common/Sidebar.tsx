@@ -35,24 +35,88 @@ export default function Sidebar() {
   const drawer = (
     <div>
       <Toolbar>
-        <Avatar src={assets.images.logo} style={{borderRadius: 5}} sx={{}}/>   
+        <Avatar src={assets.images.logo} style={{borderRadius: 5}} />   
         <Typography>
             ArcLight CRM
         </Typography>
       </Toolbar>      
       
-        <List disablePadding>                    
+        <List disablePadding>
+          <ListItemText primary="Dashboard" 
+            primaryTypographyProps={{
+              fontSize: 15,
+              fontWeight: 'medium',
+              lineHeight: '20px',
+              mb: '2px',
+            }}
+            sx={{
+              paddingY: "12px",
+              paddingX: "24px"
+            }}
+          
+          />                 
             {appRoutes.map((route, index) => (
+              route.state === "dashboard" ? (
                 route.sidebarProps ? (
-                    route.child ? (
-                        <SidebarItemCollapse item={route} key={index} />
-                            ) : (
-                            <SidebarItem item={route} key={index} />
-                            )
-                            ) : null
-                        ))}                            
+                  route.child ? (
+                      <SidebarItemCollapse item={route} key={index} />
+                          ) : (
+                          <SidebarItem item={route} key={index} />
+                          )
+                          ) : null
+              ) : null                
+            ))}                            
         </List>
-      <Divider />     
+
+        <List disablePadding>
+          <ListItemText primary="Application" 
+          primaryTypographyProps={{
+            fontSize: 15,
+            fontWeight: 'medium',
+            lineHeight: '20px',
+            mb: '2px',
+          }}
+          sx={{
+            paddingY: "12px",
+            paddingX: "24px"
+          }}/>                 
+            {appRoutes.map((route, index) => (
+              route.state === "application" ? (
+                route.sidebarProps ? (
+                  route.child ? (
+                      <SidebarItemCollapse item={route} key={index} />
+                          ) : (
+                          <SidebarItem item={route} key={index} />
+                          )
+                          ) : null
+              ) : null                
+            ))}                            
+        </List>
+
+        <List disablePadding>
+          <ListItemText primary="Management" 
+          primaryTypographyProps={{
+            fontSize: 15,
+            fontWeight: 'medium',
+            lineHeight: '20px',
+            mb: '2px',
+          }}
+          sx={{
+            paddingY: "12px",
+            paddingX: "24px"
+          }}/>                 
+            {appRoutes.map((route, index) => (
+              route.state === "management" ? (
+                route.sidebarProps ? (
+                  route.child ? (
+                      <SidebarItemCollapse item={route} key={index} />
+                          ) : (
+                          <SidebarItem item={route} key={index} />
+                          )
+                          ) : null
+              ) : null                
+            ))}                            
+        </List>     
     </div>
   );  
 
