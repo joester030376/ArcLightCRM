@@ -2,20 +2,20 @@ import React from 'react';
 import HomePage from "../pages/home/HomePage";
 import { RouteType } from "./config";
 import DashboardOutlinedIcon from '@mui/icons-material/DashboardOutlined';
+import ChatIcon from '@mui/icons-material/Chat';
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
-import ClientsPageLayout from '../pages/clients/ClientsPageLayout';
+import ClientsPageLayout from '../pages/application/clients/ClientsPageLayout';
 import Person2Icon from '@mui/icons-material/Person2';
 import Dashboard from '../pages/dashboard/Dashboard';
-import AddClient from '../pages/clients/AddClient';
-import DeleteClient from '../pages/clients/ClientList';
-import ClientList from '../pages/clients/ClientList';
-import AgentList from '../pages/agents/AgentList';
-import AddAgent from '../pages/agents/AddAgent';
-import AgentsPageLayout from '../pages/agents/AgentsPageLayout';
-import ManagementLayoutPage from '../pages/management/ManagementPageLayout';
+import AddClient from '../pages/application/clients/AddClient';
+import ClientList from '../pages/application/clients/ClientList';
+import AgentList from '../pages/application/agents/AgentList';
+import AddAgent from '../pages/application/agents/AddAgent';
+import AgentsPageLayout from '../pages/application/agents/AgentsPageLayout';
 import SubscriptionList from '../pages/management/subscriptions/SubscriptionList';
 import SubscriptionPageLayout from '../pages/management/subscriptions/SubscriptionPageLayout';
 import AddSubscription from '../pages/management/subscriptions/AddSubscription';
+import ChatPage from '../pages/application/chat/ChatPage';
 
 
 const appRoutes: RouteType[] = [
@@ -90,6 +90,15 @@ const appRoutes: RouteType[] = [
                 }
             }
         ] 
+    },
+    {
+        path: "/chat",
+            element: <ChatPage />,
+            state: 'application',
+            sidebarProps: {
+                displayText: "Chat",
+                icon: <ChatIcon />
+        }
     },
     {
         path: "/subscription",
