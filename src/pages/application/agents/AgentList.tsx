@@ -1,10 +1,15 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
-import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
+import { DataGrid, GridColDef, gridPageCountSelector, gridPaginationModelSelector, useGridApiContext, useGridSelector } from '@mui/x-data-grid';
 import Button from '@mui/material/Button';
-import DeleteIcon from '@mui/icons-material/Delete';
-import EditIcon from '@mui/icons-material/Edit';
+import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
+import BorderColorOutlinedIcon from '@mui/icons-material/BorderColorOutlined';
 import VisibilityIcon from '@mui/icons-material/Visibility';
+import Tooltip from '@mui/material/Tooltip';
+import Stack from '@mui/material/Stack';
+import Pagination from '@mui/material/Pagination';
+import Paper from '@mui/material/Paper';
+
 
 const onButtonClick = (e: React.ChangeEvent<any> , row: any) => {
     e.stopPropagation();
@@ -16,17 +21,41 @@ const onEditClick = (e: React.ChangeEvent<any> , row: any) => {
     console.log(row);
 }
 
+function CustomPagination() {
+    const apiRef = useGridApiContext();
+    const paginationModel = useGridSelector(apiRef, gridPaginationModelSelector);
+    const pageCount = useGridSelector(apiRef, gridPageCountSelector);
+  
+    return (
+        <Stack spacing={2}>
+            <Pagination
+                variant="outlined" 
+                shape="rounded"                
+                count={pageCount}
+                page={paginationModel.page + 1}
+                onChange={(event, value) => apiRef.current.setPage(value - 1)}
+            />
+        </Stack>
+    );
+  }
+
 const columns: GridColDef[] = [
-  { field: 'id', headerName: 'ID', width: 100 },
+  { field: 'id', 
+    headerName: 'ID', 
+    flex: .5,
+    minWidth: 100 
+},
   {
     field: 'firstName',
     headerName: 'First name',
+    flex: .5,
     width: 150,
     editable: true,
   },
   {
     field: 'lastName',
     headerName: 'Last name',
+    flex: .5,
     width: 200,
     editable: true,
   },
@@ -34,6 +63,7 @@ const columns: GridColDef[] = [
     field: 'email',
     headerName: 'Email',
     type: 'string',
+    flex: .5,
     width: 200,
     editable: true,
   },
@@ -41,13 +71,14 @@ const columns: GridColDef[] = [
     field: 'phone',
     headerName: 'Phone',
     type: 'string',
+    flex: .5,
     width: 200,
     editable: true,
   },
  
-    { field: 'actions', headerName: 'Actions', width: 200, renderCell: (params) => {
+    { field: 'actions', headerName: 'Actions', flex: .5, width: 200, renderCell: (params) => {
         return (
-            <div>
+            <Box sx={{ justifyContent: "flex-end" }} >
                 <Button
                     sx={{ 
                         minHeight: 0, 
@@ -56,28 +87,37 @@ const columns: GridColDef[] = [
                     }}
                     onClick={(e) => onEditClick(e, params.row)}                
                 >
-                    <VisibilityIcon
-                        sx={{
-                            fontSize: "medium",
-                            color: "#cdcfd1",
-                            
-                        }}       
-                    />
+                    <Tooltip title="view">
+                        <VisibilityIcon
+                            sx={{
+                                fontSize: "large",
+                                color: "#a3a3a3",
+                                "&:hover" : {
+                                    color: "#7a7979",
+                                }                            
+                            }}       
+                        />
+                    </Tooltip>
                 </Button>
                 <Button
                     sx={{ 
                         minHeight: 0, 
                         minWidth: 0, 
-                        padding: 1
-                         
+                        padding: 1                         
                     }}
                     onClick={(e) => onEditClick(e, params.row)}                
                 >
-                    <EditIcon 
-                        sx={{
-                            fontSize: "medium"
-                        }}   
-                    />
+                    <Tooltip title="edit">
+                        <BorderColorOutlinedIcon 
+                            sx={{
+                                fontSize: "large",
+                                color: "#4289c7",
+                                "&:hover" : {
+                                    color: "#2469a6"
+                                }
+                            }}   
+                        />
+                    </Tooltip>
                 </Button>
                 <Button               
                     sx={{ 
@@ -88,16 +128,19 @@ const columns: GridColDef[] = [
             
                     onClick={(e) => onButtonClick(e, params.row)}                          
                 >
-                    <DeleteIcon
-                        sx={{
-                            fontSize: "medium"
-                        }}                   
-                    
-                    />
+                    <Tooltip title="delete">
+                        <DeleteOutlinedIcon
+                            sx={{
+                                fontSize: "large",
+                                color: "#e03434",
+                                "&:hover" : {
+                                    color: "#e61717"
+                                }
+                            }}  
+                        />
+                    </Tooltip>
                 </Button>
-                
-                
-            </div>          
+            </Box>          
         );
       } }      
  
@@ -115,23 +158,29 @@ const rows = [
   { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
 ];
 
-export default function DataGridDemo() {
+export default function ClientList() {
   return (
-    <Box sx={{ height: "80%", width: '100%' }}>
-      <DataGrid
-        rows={rows}
-        columns={columns}
-        initialState={{
-          pagination: {
-            paginationModel: {
-              pageSize: 10,
+    <Box sx={{ height: "80%", margin: "auto", width: "80%" }}>
+        <Paper elevation={1}>
+            <DataGrid               
+                rows={rows}
+                columns={columns}
+                initialState={{
+                pagination: {            
+                paginationModel: {
+                    pageSize: 10,
+                },
             },
-          },
         }}
-        pageSizeOptions={[5]}
-        checkboxSelection
-        disableRowSelectionOnClick
-      />
+                components={{
+                    Pagination: CustomPagination,
+                }}
+                pageSizeOptions={[5]}
+                checkboxSelection
+                disableRowSelectionOnClick
+                autoHeight={true}
+            />
+        </Paper>
     </Box>
   );
 }
