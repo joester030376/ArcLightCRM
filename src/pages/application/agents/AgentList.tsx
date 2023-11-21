@@ -4,8 +4,14 @@ import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
 import Button from '@mui/material/Button';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
+import VisibilityIcon from '@mui/icons-material/Visibility';
 
 const onButtonClick = (e: React.ChangeEvent<any> , row: any) => {
+    e.stopPropagation();
+    console.log(row);
+}
+
+const onEditClick = (e: React.ChangeEvent<any> , row: any) => {
     e.stopPropagation();
     console.log(row);
 }
@@ -43,21 +49,55 @@ const columns: GridColDef[] = [
         return (
             <div>
                 <Button
-                    onClick={(e) => onButtonClick(e, params.row)}
-                    sx={{
-                        margin: "1px"
-                    }}                
+                    sx={{ 
+                        minHeight: 0, 
+                        minWidth: 0, 
+                        padding: 1 
+                    }}
+                    onClick={(e) => onEditClick(e, params.row)}                
                 >
-                    <DeleteIcon />
+                    <VisibilityIcon
+                        sx={{
+                            fontSize: "medium",
+                            color: "#cdcfd1",
+                            
+                        }}       
+                    />
                 </Button>
                 <Button
-                    onClick={(e) => onButtonClick(e, params.row)}
-                
+                    sx={{ 
+                        minHeight: 0, 
+                        minWidth: 0, 
+                        padding: 1
+                         
+                    }}
+                    onClick={(e) => onEditClick(e, params.row)}                
                 >
-                    <EditIcon />
+                    <EditIcon 
+                        sx={{
+                            fontSize: "medium"
+                        }}   
+                    />
                 </Button>
-            </div>
-          
+                <Button               
+                    sx={{ 
+                        minHeight: 0, 
+                        minWidth: 0, 
+                        padding: 1                     
+                    }}
+            
+                    onClick={(e) => onButtonClick(e, params.row)}                          
+                >
+                    <DeleteIcon
+                        sx={{
+                            fontSize: "medium"
+                        }}                   
+                    
+                    />
+                </Button>
+                
+                
+            </div>          
         );
       } }      
  
